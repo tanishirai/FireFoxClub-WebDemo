@@ -2,7 +2,7 @@
 
 A modern, minimalistic website for the Mozilla Firefox Club at VIT Bhopal University. Built with Next.js 16, React 19, and Tailwind CSS 4.
 
-## 🚀 Features
+## Features
 
 - **Modern Design**: Clean, minimalistic interface with light theme
 - **Responsive**: Fully responsive design for all devices
@@ -12,7 +12,7 @@ A modern, minimalistic website for the Mozilla Firefox Club at VIT Bhopal Univer
 - **Smooth Animations**: Framer Motion for interactive experiences
 - **Type Safe**: Full TypeScript support
 
-## 📋 Pages
+## Pages
 
 - **Home** (`/`) - Landing page with hero, about, events, and team previews
 - **About** (`/about`) - Club history, mission, and team information
@@ -25,7 +25,7 @@ A modern, minimalistic website for the Mozilla Firefox Club at VIT Bhopal Univer
 - **Join** (`/join`) - Membership signup
 - **Resources** (`/resources`) - Learning materials and links
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Framework**: Next.js 16.1.6
 - **Frontend**: React 19.2.3 with TypeScript 5
@@ -36,7 +36,7 @@ A modern, minimalistic website for the Mozilla Firefox Club at VIT Bhopal Univer
 - **UI Components**: FlyOnUI 2.4.1
 - **Linting**: ESLint 9
 
-## 🎨 Design System
+## Design System
 
 ### Colors
 - **Primary**: Orange (#ff7139)
@@ -50,7 +50,7 @@ A modern, minimalistic website for the Mozilla Firefox Club at VIT Bhopal Univer
 - **Font**: Space Grotesk (Google Fonts)
 - **Default**: System fonts fallback
 
-## 📦 Installation
+## Installation
 
 ### Prerequisites
 - Node.js 18+ (v16.14 or higher)
@@ -72,7 +72,7 @@ npm run dev
 # Open http://localhost:3000 in browser
 ```
 
-## 🚀 Build & Deployment
+## Build & Deployment
 
 ```bash
 # Build for production
@@ -85,7 +85,7 @@ npm run start
 npm run lint
 ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 src/
@@ -108,7 +108,7 @@ src/
     └── data.tsx             # Data variables
 ```
 
-## 🎯 Key Features Explained
+## Key Features Explained
 
 ### Navbar
 - Sticky header with scroll detection
@@ -130,7 +130,7 @@ src/
 - Contact information
 - Copyright notice
 
-## 💻 Development
+## Development
 
 ### Code Style
 - TypeScript for type safety
@@ -145,7 +145,7 @@ src/
 - Accessibility standards
 - Performance optimization
 
-## 🚢 Deployment Options
+## Deployment Options
 
 ### Vercel (Recommended)
 ```bash
@@ -169,7 +169,7 @@ CMD ["npm", "start"]
 - GitHub Pages
 - Traditional VPS
 
-## 📝 Environment Variables
+## Environment Variables
 
 Create a `.env.local` file:
 
@@ -178,22 +178,22 @@ Create a `.env.local` file:
 # NEXT_PUBLIC_API_URL=https://api.example.com
 ```
 
-## 🔗 Useful Links
+## Useful Links
 
 - [Next.js Documentation](https://nextjs.org/docs)
 - [React Documentation](https://react.dev)
 - [Tailwind CSS](https://tailwindcss.com)
 - [Framer Motion](https://www.framer.com/motion/)
 
-## 📄 License
+## License
 
 This project is open source and available under the MIT License.
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-## 📧 Contact
+## Contact
 
 - **Email**: hello@mozilla-vitbhopal.club
 - **Location**: VIT Bhopal University, India
