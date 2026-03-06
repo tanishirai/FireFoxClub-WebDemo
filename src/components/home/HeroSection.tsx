@@ -1,101 +1,129 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useMotionTemplate, useMotionValue, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import Lottie from "lottie-react";
+import { ArrowRight } from "lucide-react";
+import { Dancing_Script, Black_Ops_One, Geo } from "next/font/google";
+import { MouseEvent, useEffect } from "react";
+
+const dancingScript = Dancing_Script({ subsets: ["latin"], weight: ["700"] });
+const blackOpsOne = Black_Ops_One({ subsets: ["latin"], weight: ["400"] });
+const geo = Geo({ subsets: ["latin"], weight: ["400"] });
 
 export default function HeroSection() {
-    const [animationData, setAnimationData] = useState<Record<string, unknown> | null>(null);
+    const mouseX = useMotionValue(0);
+    const mouseY = useMotionValue(0);
+
+    // Scroll parallax effect
+    const { scrollY } = useScroll();
+    const yText = useTransform(scrollY, [0, 800], [0, 200]);
+    const opacityText = useTransform(scrollY, [0, 400], [1, 0]);
 
     useEffect(() => {
-        fetch('/working.json')
-            .then(res => res.json())
-            .then(data => setAnimationData(data))
-            .catch(err => console.error("Error loading animation:", err));
-    }, []);
+        // Set initial spotlight position to the center of the screen
+        mouseX.set(window.innerWidth / 2);
+        mouseY.set(window.innerHeight / 3);
+    }, [mouseX, mouseY]);
+
+    function handleMouseMove({ currentTarget, clientX, clientY }: MouseEvent) {
+        const { left, top } = currentTarget.getBoundingClientRect();
+        mouseX.set(clientX - left);
+        mouseY.set(clientY - top);
+    }
+
+    // Dynamic mask using Framer Motion
+    const maskImage = useMotionTemplate`radial-gradient(350px circle at ${mouseX}px ${mouseY}px, black 30%, transparent 100%)`;
+
+    // Centralised text content renderer to ensure pixel-perfect duplication
+    const renderContent = (isRevealed: boolean) => (
+        <div className="flex flex-col items-center justify-center max-w-4xl mx-auto w-full">
+            {/* Badge */}
+            <div
+                className={`flex items-center gap-2 px-4 py-2 rounded-full mb-8 border transition-all ${
+                    isRevealed
+                        ? "bg-brand-orange/20 border-brand-orange/50"
+                        : "bg-white/5 border-white/5"
+                }`}
+            >
+                <span className={`text-xs font-bold tracking-widest uppercase ${isRevealed ? "text-brand-orange" : "text-gray-400"}`}>
+                    New
+                </span>
+                <span className={`text-sm ${isRevealed ? "text-gray-200" : "text-gray-500"}`}>
+                    Build bigger, faster with Mozilla Firefox Club
+                </span>
+            </div>
+
+            {/* Main Headline */}
+            <h1 className="text-center mb-6 leading-tight flex flex-col gap-2 md:gap-4 w-full">
+                <span
+                    className={`text-4xl sm:text-5xl md:text-6xl font-normal uppercase tracking-wide ${blackOpsOne.className} transition-colors ${
+                        isRevealed ? "text-white" : "text-gray-600"
+                    }`}
+                >
+                    Build, collaborate, and
+                </span>
+                <span
+                    className={`text-5xl sm:text-6xl md:text-7xl ${dancingScript.className} transition-colors ${
+                        isRevealed ? "text-brand-orange" : "text-gray-600"
+                    }`}
+                >
+                    Innovate together
+                </span>
+            </h1>
+
+            {/* Description */}
+            <p
+                className={`text-xl md:text-2xl text-center max-w-3xl leading-relaxed ${geo.className} transition-colors ${
+                    isRevealed ? "text-gray-200" : "text-gray-600"
+                }`}
+            >
+                Join our vibrant community of developers, designers, and tech enthusiasts. Learn, build, and create amazing open-source projects with Mozilla Firefox Club at VIT Bhopal.
+            </p>
+        </div>
+    );
 
     return (
-        <section className="relative min-h-[calc(100vh-80px)] flex items-center overflow-hidden bg-[#070301]">
-            {/* Background ambient glow */}
-            <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[600px] h-[600px] bg-[#ff3e00] rounded-full filter blur-[180px] opacity-10 pointer-events-none"></div>
-
-            <div className="container mx-auto px-6 relative z-10 py-12">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-
-                    {/* Left Column - Text Content */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -30 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.8 }}
-                    >
-                        {/* Status Badge */}
-                        <div className="flex items-center gap-3 px-4 py-1.5 bg-[#1a0a00]/80 border-l-[3px] border-[#ff3e00] mb-8 w-fit backdrop-blur-sm">
-                            <span className="text-[#ff3e00] text-[10px] sm:text-xs font-bold tracking-[0.2em] uppercase">System Status: Operational</span>
-                        </div>
-
-                        {/* Main Typography */}
-                        <h1 className="text-[3.5rem] sm:text-6xl md:text-[5.5rem] lg:text-[6.5rem] font-black italic uppercase leading-[0.9] tracking-tighter mb-6">
-                            <span className="text-white drop-shadow-md">Code The</span><br />
-                            <span className="text-[#ff3e00] drop-shadow-[0_0_25px_rgba(255,62,0,0.4)] relative">Future.</span>
-                        </h1>
-
-                        {/* Description Paragraph */}
-                        <p className="text-gray-400 text-base md:text-lg max-w-[28rem] mb-10 leading-relaxed font-medium">
-                            Experience the Cyber-Tech revolution with Mozilla Firefox Club VIT Bhopal. Pushing the boundaries of open-source innovation through decentralized protocols.
-                        </p>
-
-                        {/* Buttons */}
-                        <div className="flex flex-col sm:flex-row items-center gap-4">
-                            <Link href="/join" className="w-full sm:w-auto">
-                                <motion.button
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    className="w-full sm:w-auto px-8 py-4 bg-[#ff3e00] text-white font-black italic tracking-[0.15em] text-sm uppercase rounded shadow-[0_4px_14px_0_rgba(255,62,0,0.39)] hover:bg-[#ff5a1f] transition-colors"
-                                >
-                                    Initialize Lab
-                                </motion.button>
-                            </Link>
-                            <Link href="/projects" className="w-full sm:w-auto">
-                                <motion.button
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    className="w-full sm:w-auto px-8 py-4 bg-[#110602] text-white font-black italic tracking-[0.15em] text-sm uppercase rounded border border-[#ff3e00]/30 hover:bg-[#ff3e00]/10 hover:border-[#ff3e00] transition-colors shadow-[inset_0_0_15px_rgba(255,62,0,0.05)]"
-                                >
-                                    Join Protocol
-                                </motion.button>
-                            </Link>
-                        </div>
-                    </motion.div>
-
-                    {/* Right Column - Image */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 30 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        className="relative w-full flex justify-center lg:justify-end mt-12 lg:mt-0"
-                    >
-                        {/* Image background glow */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[#ff3e00] rounded-full filter blur-[150px] opacity-[0.15]"></div>
-
-                        {/* Animation Container */}
-                        <div className="relative w-full max-w-[600px] aspect-square group">
-                            {/* The actual animation */}
-                            <div className="relative w-full h-full opacity-90 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                                {animationData ? (
-                                    <Lottie
-                                        animationData={animationData}
-                                        loop={true}
-                                        className="w-full h-full scale-[1.3] drop-shadow-[0_0_25px_rgba(255,62,0,0.2)]"
-                                    />
-                                ) : (
-                                    <div className="w-12 h-12 border-4 border-[#ff3e00] border-t-transparent rounded-full animate-spin"></div>
-                                )}
-                            </div>
-                        </div>
-                    </motion.div>
+        <section
+            className="relative min-h-[calc(100vh-80px)] flex flex-col items-center justify-center overflow-hidden bg-transparent group pt-16"
+            onMouseMove={handleMouseMove}
+        >
+            {/* 1. Interactive Text Block (Scrolls and tracks mouse) */}
+            <motion.div 
+                className="relative z-10 w-full grid px-6"
+                style={{ y: yText, opacity: opacityText }}
+            >
+                {/* Layer A - Blurred Background */}
+                <div className="col-start-1 row-start-1 w-full select-none pointer-events-none blur-[10px] opacity-40">
+                    {renderContent(false)}
                 </div>
-            </div>
+
+                {/* Layer B - Clear Foreground (Masked by Spotlight) */}
+                <motion.div
+                    className="col-start-1 row-start-1 w-full pointer-events-none z-20"
+                    style={{ maskImage, WebkitMaskImage: maskImage } as React.CSSProperties}
+                >
+                    {renderContent(true)}
+                </motion.div>
+            </motion.div>
+
+            {/* 2. Interactive CTA Button Block - Stays perfectly crisp below */}
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="relative z-30 mt-16 px-6"
+            >
+                <Link href="/join">
+                    <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="flex items-center gap-3 px-10 py-5 bg-white text-black font-black rounded-2xl shadow-xl hover:shadow-orange-500/20 hover:bg-brand-orange hover:text-white transition-all duration-300 group"
+                    >
+                        Get Started
+                        <ArrowRight size={22} className="group-hover:translate-x-2 transition-transform" />
+                    </motion.button>
+                </Link>
+            </motion.div>
         </section>
     );
 }

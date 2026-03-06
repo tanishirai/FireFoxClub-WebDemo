@@ -7,67 +7,137 @@ import { FEATURES_DATA } from "@/constants/data";
 
 export default function AboutSection() {
     return (
-        <section className="py-24 relative overflow-hidden bg-[#0a0402]">
-            {/* Background elements */}
-            <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-brand-orange/5 to-transparent pointer-events-none"></div>
+        <section className="py-32 relative overflow-hidden">
+            {/* Background decorative elements */}
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-orange/5 blur-[120px] rounded-full -z-10" />
+            <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-brand-yellow/5 blur-[100px] rounded-full -z-10" />
 
             <div className="container mx-auto px-6 relative z-10">
-                <div className="flex flex-col lg:flex-row gap-16 items-center">
+                <div className="flex flex-col lg:flex-row gap-20 items-stretch">
 
                     {/* Left text area */}
-                    <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="flex-1 space-y-8">
-                        <div>
-                            <span className="text-brand-orange text-xs font-bold tracking-[0.2em] uppercase bg-brand-orange/10 px-3 py-1 border border-brand-orange/20 rounded-sm">Initiative Overview</span>
-                            <h2 className="text-4xl md:text-5xl font-black italic uppercase mt-4 mb-6 leading-tight">
-                                What is <span className="text-brand-orange drop-shadow-[0_0_15px_rgba(255,113,57,0.5)]">MFC</span>?
+                    <motion.div 
+                        initial={{ opacity: 0, y: 20 }} 
+                        whileInView={{ opacity: 1, y: 0 }} 
+                        viewport={{ once: true }} 
+                        transition={{ duration: 0.8 }} 
+                        className="flex-1 flex flex-col justify-center"
+                    >
+                        <div className="mb-8">
+                            <motion.span 
+                                initial={{ opacity: 0, x: -20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.2 }}
+                                className="text-brand-orange text-sm font-bold tracking-[0.2em] uppercase px-4 py-1.5 rounded-full border border-brand-orange/20 bg-brand-orange/5 inline-block mb-6 shadow-sm shadow-orange-500/10"
+                            >
+                                Our DNA
+                            </motion.span>
+                            <h2 className="text-5xl md:text-6xl font-black mt-2 mb-8 leading-[1.1] text-white tracking-tight">
+                                Empowering the <br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-orange to-brand-yellow">Open Web.</span>
                             </h2>
+                            <div className="space-y-6 max-w-xl">
+                                <p className="text-gray-300 text-xl leading-relaxed font-light">
+                                    The Mozilla Firefox Club is more than just a college club. We are a community of <span className="text-white font-medium">pioneers</span>, <span className="text-white font-medium">builders</span>, and <span className="text-white font-medium">advocates</span>.
+                                </p>
+                                <p className="text-gray-400 text-lg leading-relaxed font-light">
+                                    Guided by Mozilla&apos;s mission, we champion privacy, open-source innovation, and digital inclusion, creating a space where technology serves humanity.
+                                </p>
+                            </div>
                         </div>
-                        <p className="text-gray-400 text-lg leading-relaxed font-medium">
-                            The Mozilla Firefox Club is a university-based community powered by Mozilla. We are passionate developers, designers, and tech enthusiasts who believe in the power of open-source and the open web.
-                        </p>
-                        <p className="text-gray-400 text-lg leading-relaxed font-medium">
-                            Whether you&apos;re a seasoned coder or just starting out, there&apos;s a place for you here to learn, build, and grow together.
-                        </p>
 
-                        <div className="pt-4">
-                            <Link href="/about" className="inline-flex items-center gap-2 px-6 py-3 bg-[#110602] border border-brand-orange/30 text-white font-bold text-sm tracking-widest uppercase hover:bg-brand-orange hover:border-brand-orange transition-all group">
-                                Read our full story <ArrowRight className="group-hover:translate-x-1 transition-transform" size={16} />
+                        <div className="pt-6 flex flex-wrap gap-4">
+                            <Link href="/about" className="inline-flex items-center gap-3 px-8 py-4 bg-white text-black font-bold rounded-2xl hover:bg-brand-orange hover:text-white transition-all duration-300 group shadow-xl shadow-white/5">
+                                Explore Our Vision <ArrowRight className="group-hover:translate-x-2 transition-transform" size={20} />
                             </Link>
+                            <div className="flex -space-x-3 items-center ml-4">
+                                {[1, 2, 3, 4].map((i) => (
+                                    <div key={i} className="w-10 h-10 rounded-full border-2 border-black bg-gray-800 flex items-center justify-center overflow-hidden">
+                                        <div className={`w-full h-full bg-gradient-to-br ${i % 2 === 0 ? "from-brand-orange to-orange-600" : "from-gray-700 to-gray-900"}`} />
+                                    </div>
+                                ))}
+                                <span className="ml-4 text-sm text-gray-400 font-medium">+200 members</span>
+                            </div>
                         </div>
                     </motion.div>
 
                     {/* Right Bento Grid */}
-                    <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="flex-1 w-full">
-                        <div className="grid grid-cols-2 gap-4 auto-rows-[160px]">
-                            {/* Feature 1 - Large box */}
-                            <div className="col-span-2 md:col-span-1 row-span-2 relative p-8 rounded-lg overflow-hidden group bg-gradient-to-br from-[#1a0a00] to-[#0a0402] border border-white/5 hover:border-brand-orange/50 transition-all shadow-2xl">
-                                <div className="absolute top-0 left-0 w-1 h-full bg-brand-orange group-hover:w-full group-hover:opacity-5 transition-all duration-500"></div>
-                                <div className="text-brand-orange mb-6 p-4 rounded-full bg-brand-orange/10 w-fit group-hover:scale-110 transition-transform">{FEATURES_DATA[0].icon}</div>
-                                <h3 className="text-2xl font-black italic uppercase mb-2 text-white">{FEATURES_DATA[0].title}</h3>
-                                <p className="text-sm text-gray-400 leading-relaxed font-medium">{FEATURES_DATA[0].desc}</p>
+                    <motion.div 
+                        initial={{ opacity: 0, scale: 0.95 }} 
+                        whileInView={{ opacity: 1, scale: 1 }} 
+                        viewport={{ once: true }} 
+                        transition={{ duration: 0.8 }} 
+                        className="flex-1 w-full flex flex-col justify-center"
+                    >
+                        <div className="grid grid-cols-1 md:grid-cols-12 gap-5 min-h-[500px]">
+                            {/* Left Column */}
+                            <div className="md:col-span-7 flex flex-col gap-5">
+                                {/* Open Source (Large Card) */}
+                                <motion.div 
+                                    whileHover={{ y: -5 }}
+                                    className="flex-1 min-h-[300px] relative p-8 rounded-[2rem] overflow-hidden group bg-gradient-to-br from-[#2a130b]/90 to-black/90 border border-brand-orange/30 hover:border-brand-orange/60 transition-all duration-500 shadow-2xl backdrop-blur-md flex flex-col justify-end"
+                                >
+                                    {/* Watermark Icon */}
+                                    <div className="absolute top-8 right-8 text-brand-orange/10 group-hover:scale-110 transition-transform duration-700">
+                                        <div className="w-20 h-20 flex items-center justify-center [&>svg]:w-full [&>svg]:h-full">
+                                            {FEATURES_DATA[0].icon}
+                                        </div>
+                                    </div>
+                                    
+                                    <div className="relative z-10">
+                                        <div className="w-14 h-14 rounded-2xl bg-brand-orange/10 flex items-center justify-center text-brand-orange mb-6 border border-brand-orange/20 shadow-lg shadow-orange-500/10">
+                                            {FEATURES_DATA[0].icon}
+                                        </div>
+                                        <h3 className="text-3xl font-black mb-2 text-white tracking-tight">{FEATURES_DATA[0].title}</h3>
+                                        <p className="text-gray-300 text-lg font-light">{FEATURES_DATA[0].desc}</p>
+                                    </div>
+                                </motion.div>
+
+                                {/* Innovation (Horizontal Card) */}
+                                <motion.div 
+                                    whileHover={{ y: -5 }}
+                                    className="h-auto md:h-36 relative p-6 rounded-[2rem] overflow-hidden group bg-[#0a0a0a]/90 backdrop-blur-md border border-white/10 hover:border-white/20 transition-all duration-500 flex flex-col sm:flex-row items-start sm:items-center gap-6 shadow-xl"
+                                >
+                                    <div className="w-16 h-16 shrink-0 rounded-2xl bg-white/5 flex items-center justify-center text-white border border-white/5 group-hover:bg-white/10 transition-colors">
+                                        {FEATURES_DATA[3].icon}
+                                    </div>
+                                    <div>
+                                        <h3 className="text-2xl font-bold mb-1 text-white tracking-tight">{FEATURES_DATA[3].title}</h3>
+                                        <p className="text-gray-400 font-light text-sm md:text-base">{FEATURES_DATA[3].desc}</p>
+                                    </div>
+                                </motion.div>
                             </div>
 
-                            {/* Feature 2 - Small box */}
-                            <div className="col-span-1 relative p-6 rounded-lg overflow-hidden group bg-[#0f0603] border border-white/5 hover:border-brand-yellow/50 transition-all">
-                                <div className="text-brand-yellow mb-3 opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-transform origin-left">{FEATURES_DATA[1].icon}</div>
-                                <h3 className="text-lg font-bold uppercase mb-1 text-gray-200">{FEATURES_DATA[1].title}</h3>
-                                <p className="text-xs text-gray-500 leading-relaxed">{FEATURES_DATA[1].desc}</p>
-                            </div>
+                            {/* Right Column */}
+                            <div className="md:col-span-5 flex flex-col gap-5">
+                                {/* Community */}
+                                <motion.div 
+                                    whileHover={{ y: -5 }}
+                                    className="flex-1 min-h-[220px] relative p-8 rounded-[2rem] overflow-hidden group bg-[#0a0a0a]/90 backdrop-blur-md border border-white/10 hover:border-white/20 transition-all duration-500 flex flex-col shadow-xl"
+                                >
+                                    <div className="text-brand-yellow mb-6">
+                                        <div className="w-10 h-10 flex items-center justify-center [&>svg]:w-full [&>svg]:h-full">
+                                            {FEATURES_DATA[1].icon}
+                                        </div>
+                                    </div>
+                                    <h3 className="text-2xl font-bold mb-2 text-white tracking-tight">{FEATURES_DATA[1].title}</h3>
+                                    <p className="text-gray-400 font-light leading-relaxed">{FEATURES_DATA[1].desc}</p>
+                                </motion.div>
 
-                            {/* Feature 3 - Small box */}
-                            <div className="col-span-1 relative p-6 rounded-lg overflow-hidden group bg-gradient-to-tr from-brand-orange/20 to-[#0f0603] border border-brand-orange/20">
-                                <div className="text-white mb-3 group-hover:scale-110 transition-transform origin-left">{FEATURES_DATA[2].icon}</div>
-                                <h3 className="text-lg font-bold uppercase mb-1 text-white">{FEATURES_DATA[2].title}</h3>
-                                <p className="text-xs text-brand-orange/80 leading-relaxed">{FEATURES_DATA[2].desc}</p>
-                            </div>
-
-                            {/* Feature 4 - Medium flat box */}
-                            <div className="col-span-2 relative p-6 rounded-lg overflow-hidden group bg-[#0f0603] border border-white/5 hover:border-white/20 transition-all flex items-center gap-6">
-                                <div className="text-brand-purple p-4 rounded-full bg-brand-purple/10 group-hover:bg-brand-purple group-hover:text-white transition-colors">{FEATURES_DATA[3].icon}</div>
-                                <div>
-                                    <h3 className="text-xl font-bold uppercase mb-1 text-gray-200">{FEATURES_DATA[3].title}</h3>
-                                    <p className="text-sm text-gray-500">{FEATURES_DATA[3].desc}</p>
-                                </div>
+                                {/* Events */}
+                                <motion.div 
+                                    whileHover={{ y: -5 }}
+                                    className="flex-1 min-h-[220px] relative p-8 rounded-[2rem] overflow-hidden group bg-[#0a0a0a]/90 backdrop-blur-md border border-white/10 hover:border-white/20 transition-all duration-500 flex flex-col shadow-xl"
+                                >
+                                    <div className="text-brand-orange mb-6">
+                                        <div className="w-10 h-10 flex items-center justify-center [&>svg]:w-full [&>svg]:h-full">
+                                            {FEATURES_DATA[2].icon}
+                                        </div>
+                                    </div>
+                                    <h3 className="text-2xl font-bold mb-2 text-white tracking-tight">{FEATURES_DATA[2].title}</h3>
+                                    <p className="text-gray-400 font-light leading-relaxed">{FEATURES_DATA[2].desc}</p>
+                                </motion.div>
                             </div>
                         </div>
                     </motion.div>

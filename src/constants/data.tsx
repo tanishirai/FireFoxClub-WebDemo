@@ -29,3 +29,16 @@ export const EVENTS_DATA = [
 ];
 
 export const TEAM_MEMBERS_PREVIEW = [1, 2, 3, 4, 5];
+
+export const PARTNERS_DATA = [
+    "Mozilla",
+    "GitHub",
+    "Dev.to",
+    "Vercel",
+    "Figma",
+    "Google",
+    "Meta",
+    "OpenAI",
+    "AWS",
+    "Digital Ocean",
+];

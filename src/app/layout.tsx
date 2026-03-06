@@ -45,10 +45,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${spaceGrotesk.variable} antialiased min-h-screen flex flex-col bg-background font-sans`}
+        className={`${spaceGrotesk.variable} antialiased min-h-screen flex flex-col bg-background font-sans relative`}
       >
+        {/* Background overlay */}
+        <div className="fixed inset-0 bg-black/80 -z-10 pointer-events-none"></div>
+        
         <Navbar />
-        <main className="grow pt-20">
+        <main className="grow pt-20 relative z-0">
           {children}
         </main>
         <Footer />
