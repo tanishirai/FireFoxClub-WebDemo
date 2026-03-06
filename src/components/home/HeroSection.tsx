@@ -100,7 +100,7 @@ export default function HeroSection() {
                 {/* Layer B - Clear Foreground (Masked by Spotlight) */}
                 <motion.div
                     className="col-start-1 row-start-1 w-full pointer-events-none z-20"
-                    style={{ maskImage, WebkitMaskImage: maskImage } as React.CSSProperties}
+                    style={{ maskImage, WebkitMaskImage: maskImage } as any}
                 >
                     {renderContent(true)}
                 </motion.div>

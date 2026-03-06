@@ -30,6 +30,8 @@ html {
   background-position: center;
   background-repeat: no-repeat;
   background-color: #000000;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
 body {
@@ -42,11 +44,6 @@ body {
 /* Hide scrollbar completely but keep functionality */
 ::-webkit-scrollbar {
   display: none;
-}
-
-html {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
 }
 
 /* Background image utility classes */

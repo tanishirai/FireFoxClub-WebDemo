@@ -45,7 +45,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${spaceGrotesk.variable} antialiased min-h-screen flex flex-col bg-background font-sans relative`}
+        className={`${spaceGrotesk.variable} antialiased min-h-screen flex flex-col font-sans relative`}
       >
         {/* Background overlay */}
         <div className="fixed inset-0 bg-black/80 -z-10 pointer-events-none"></div>
