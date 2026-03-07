@@ -1,15 +1,18 @@
 "use client";
 
+
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { TEAM_MEMBERS_PREVIEW } from "@/constants/data";
+
 
 export default function TeamGalleryPreview() {
     return (
         <section className="py-32 relative overflow-hidden">
             <div className="container mx-auto px-6 relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
+
 
                     {/* Team Preview */}
                     <motion.div 
@@ -30,13 +33,14 @@ export default function TeamGalleryPreview() {
 
                         <div className="flex flex-col gap-6 p-8 rounded-[2.5rem] bg-white/5 border border-white/10 group-hover/team:bg-white/[0.07] transition-all duration-500">
                             <div className="flex -space-x-4 items-center">
-                                {TEAM_MEMBERS_PREVIEW.map((i) => (
+                                {TEAM_MEMBERS_PREVIEW.map((member) => (
                                     <motion.div 
-                                        key={i} 
+                                        key={member.name}
                                         whileHover={{ y: -8, scale: 1.1 }}
-                                        className="w-16 h-16 rounded-full bg-gradient-to-br from-brand-orange to-brand-yellow flex items-center justify-center text-xl font-black text-white border-4 border-black shadow-xl"
+                                        className={`w-16 h-16 rounded-full bg-gradient-to-br ${member.gradient} flex items-center justify-center text-sm font-black text-white border-4 border-black shadow-xl`}
+                                        title={`${member.name} — ${member.role}`}
                                     >
-                                        {i}
+                                        {member.initials}
                                     </motion.div>
                                 ))}
                                 <div className="w-16 h-16 rounded-full bg-gray-900 flex items-center justify-center text-sm font-bold text-gray-400 border-4 border-black">
