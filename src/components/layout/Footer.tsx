@@ -21,7 +21,7 @@ export default function Footer() {
                             />
                         </div>
                         <span className="font-bold text-white">
-                            Firefox Club
+                            Mozilla Firefox Club
                         </span>
                     </div>
                     <p className="max-w-md text-sm text-gray-400 leading-relaxed">
@@ -74,7 +74,7 @@ export default function Footer() {
             </div>
 
             <div className="container mx-auto px-6 md:px-12 mt-12 pt-8 border-t border-gray-800 flex flex-col md:flex-row items-center justify-between text-xs text-gray-600">
-                <p>&copy; {currentYear} Firefox Club. All rights reserved.</p>
+                <p>&copy; {currentYear} Mozilla Firefox Club. All rights reserved.</p>
                 <p className="mt-2 md:mt-0 flex gap-4">
                     <Link href="/privacy" className="hover:text-brand-purple transition-colors">Privacy</Link>
                     <Link href="/terms" className="hover:text-brand-purple transition-colors">Terms</Link>
