@@ -16,15 +16,15 @@ export default function AboutSection() {
                 <div className="flex flex-col lg:flex-row gap-20 items-stretch">
 
                     {/* Left text area */}
-                    <motion.div 
-                        initial={{ opacity: 0, y: 20 }} 
-                        whileInView={{ opacity: 1, y: 0 }} 
-                        viewport={{ once: true }} 
-                        transition={{ duration: 0.8 }} 
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
                         className="flex-1 flex flex-col justify-center"
                     >
                         <div className="mb-8">
-                            <motion.span 
+                            <motion.span
                                 initial={{ opacity: 0, x: -20 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
@@ -35,7 +35,14 @@ export default function AboutSection() {
                             </motion.span>
                             <h2 className="text-5xl md:text-6xl font-black mt-2 mb-8 leading-[1.1] text-white tracking-tight">
                                 Empowering the <br />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-purple to-brand-cyan">Open Web.</span>
+                                <span
+                                    className="text-transparent bg-clip-text"
+                                    style={{
+                                        backgroundImage: "linear-gradient(180deg, #8a37f5 20%, rgba(138,55,245,0.05) 100%)"
+                                    }}
+                                >
+                                    Open Web.
+                                </span>
                             </h2>
                             <div className="space-y-6 max-w-xl">
                                 <p className="text-gray-300 text-xl leading-relaxed font-light">
@@ -63,18 +70,18 @@ export default function AboutSection() {
                     </motion.div>
 
                     {/* Right Bento Grid */}
-                    <motion.div 
-                        initial={{ opacity: 0, scale: 0.95 }} 
-                        whileInView={{ opacity: 1, scale: 1 }} 
-                        viewport={{ once: true }} 
-                        transition={{ duration: 0.8 }} 
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
                         className="flex-1 w-full flex flex-col justify-center"
                     >
                         <div className="grid grid-cols-1 md:grid-cols-12 gap-5 min-h-[500px]">
                             {/* Left Column */}
                             <div className="md:col-span-7 flex flex-col gap-5">
                                 {/* Open Source (Large Card) */}
-                                <motion.div 
+                                <motion.div
                                     whileHover={{ y: -5 }}
                                     className="flex-1 min-h-[300px] relative p-8 rounded-[2rem] overflow-hidden group bg-gradient-to-br from-[#2a130b]/90 to-black/90 border border-brand-purple/30 hover:border-brand-purple/60 transition-all duration-500 shadow-2xl backdrop-blur-md flex flex-col justify-end"
                                 >
@@ -84,7 +91,7 @@ export default function AboutSection() {
                                             {FEATURES_DATA[0].icon}
                                         </div>
                                     </div>
-                                    
+
                                     <div className="relative z-10">
                                         <div className="w-14 h-14 rounded-2xl bg-brand-purple/10 flex items-center justify-center text-brand-purple mb-6 border border-brand-purple/20 shadow-lg shadow-purple-500/10">
                                             {FEATURES_DATA[0].icon}
@@ -95,7 +102,7 @@ export default function AboutSection() {
                                 </motion.div>
 
                                 {/* Innovation (Horizontal Card) */}
-                                <motion.div 
+                                <motion.div
                                     whileHover={{ y: -5 }}
                                     className="h-auto md:h-36 relative p-6 rounded-[2rem] overflow-hidden group bg-[#0a0a0a]/90 backdrop-blur-md border border-white/10 hover:border-white/20 transition-all duration-500 flex flex-col sm:flex-row items-start sm:items-center gap-6 shadow-xl"
                                 >
@@ -112,7 +119,7 @@ export default function AboutSection() {
                             {/* Right Column */}
                             <div className="md:col-span-5 flex flex-col gap-5">
                                 {/* Community */}
-                                <motion.div 
+                                <motion.div
                                     whileHover={{ y: -5 }}
                                     className="flex-1 min-h-[220px] relative p-8 rounded-[2rem] overflow-hidden group bg-[#0a0a0a]/90 backdrop-blur-md border border-white/10 hover:border-white/20 transition-all duration-500 flex flex-col shadow-xl"
                                 >
@@ -126,7 +133,7 @@ export default function AboutSection() {
                                 </motion.div>
 
                                 {/* Events */}
-                                <motion.div 
+                                <motion.div
                                     whileHover={{ y: -5 }}
                                     className="flex-1 min-h-[220px] relative p-8 rounded-[2rem] overflow-hidden group bg-[#0a0a0a]/90 backdrop-blur-md border border-white/10 hover:border-white/20 transition-all duration-500 flex flex-col shadow-xl"
                                 >
