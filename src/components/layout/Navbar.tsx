@@ -13,7 +13,7 @@ const navLinks = [
   { name: "Events", path: "/events" },
   { name: "Team", path: "/team" },
   { name: "Gallery", path: "/gallery" },
-  { name: "Blog", path: "/blog" },
+  // { name: "Blog", path: "/blog" },
 ];
 
 export default function Navbar() {
@@ -92,21 +92,6 @@ export default function Navbar() {
                   );
                 })}
               </div>
-
-              <div className="flex items-center gap-3 border-l border-white/20 pl-6">
-                <Link href="/login" className="text-sm font-medium text-gray-200 hover:text-white transition-colors">
-                  Sign In
-                </Link>
-                <Link href="/join">
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="px-5 py-2 rounded-xl font-semibold text-black bg-white hover:bg-brand-purple hover:text-white shadow-lg transition-all text-sm"
-                  >
-                    Get Started
-                  </motion.button>
-                </Link>
-              </div>
             </nav>
 
             {/* Mobile Menu Toggle */}
@@ -144,22 +129,6 @@ export default function Navbar() {
                   {link.name}
                 </Link>
               ))}
-              <div className="mt-4 pt-4 border-t border-white/10 flex flex-col gap-3">
-                <Link
-                  href="/login"
-                  onClick={() => setIsOpen(false)}
-                  className="px-4 py-3 text-center text-gray-300 font-medium"
-                >
-                  Sign In
-                </Link>
-                <Link
-                  href="/join"
-                  onClick={() => setIsOpen(false)}
-                  className="px-4 py-3 rounded-xl bg-brand-purple text-white font-semibold text-center hover:bg-purple-600 transition-colors shadow-lg shadow-purple-500/20"
-                >
-                  Get Started
-                </Link>
-              </div>
             </div>
           </motion.div>
         )}

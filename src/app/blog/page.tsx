@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+/* import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Blog | Mozilla Firefox Club VIT Bhopal",
@@ -18,3 +18,4 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPage() { return (<div className="container mx-auto px-6 py-24 min-h-screen"><h1 className="text-4xl font-bold text-brand-purple mb-8 capitalize">Blog</h1><p className="text-gray-300">This page is currently under construction. Check back soon!</p></div>); }
+ */

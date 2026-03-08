@@ -4,9 +4,10 @@ import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import {
     Globe, Code2, Users, Zap, Shield, Heart,
-    ArrowRight, Github, Twitter, Linkedin,
+    ArrowRight, Github,
     Flame, Star, BookOpen, Trophy, Target, Lightbulb
 } from "lucide-react";
+import Link from "next/link";
 
 const STATS = [
     { value: "500+", label: "Active Members", icon: Users },
@@ -43,7 +44,7 @@ function StatCard({ stat, index }: { stat: typeof STATS[0]; index: number }) {
             transition={{ delay: index * 0.1, duration: 0.6 }}
             className="relative group"
         >
-            <div className="relative p-6 rounded-2xl border border-white/[0.08] bg-white/[0.03] hover:bg-white/[0.06] transition-all duration-300 text-center overflow-hidden">
+            <div className="relative p-6 rounded-2xl border border-white/[0.08] bg-[#0e0e0e] hover:bg-[#131313] transition-all duration-300 text-center overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-brand-purple/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <Icon size={22} className="text-brand-purple mx-auto mb-3" />
                 <div className="text-4xl font-black text-white mb-1">{stat.value}</div>
@@ -63,7 +64,7 @@ function ValueCard({ value, index }: { value: typeof VALUES[0]; index: number })
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: index * 0.08, duration: 0.5 }}
             whileHover={{ y: -6, transition: { duration: 0.2 } }}
-            className="group relative p-6 rounded-2xl border border-white/[0.07] bg-white/[0.02] hover:border-white/20 transition-all duration-300 cursor-default overflow-hidden"
+            className="group relative p-6 rounded-2xl border border-white/[0.07] bg-[#0e0e0e] hover:border-white/20 transition-all duration-300 cursor-default overflow-hidden"
         >
             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                 style={{ background: `radial-gradient(circle at 30% 30%, ${value.color}15, transparent 70%)` }} />
@@ -93,8 +94,6 @@ export default function AboutContent() {
                     <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-brand-purple/20 rounded-full blur-[120px]" />
                     <div className="absolute top-0 right-0 w-96 h-96 bg-brand-cyan/10 rounded-full blur-[100px]" />
                     <div className="absolute bottom-0 left-0 w-80 h-80 bg-brand-purple/10 rounded-full blur-[80px]" />
-                    <div className="absolute inset-0 opacity-[0.03]"
-                        style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
                     {[...Array(5)].map((_, i) => (
                         <motion.div key={i} className="absolute rounded-full"
                             style={{
@@ -134,17 +133,19 @@ export default function AboutContent() {
                         A student-led community at <strong className="text-white">VIT Bhopal</strong> spreading
                         open-source culture, advocating for web privacy, and helping students build real things.
                     </motion.p>
+                    <Link href="/join" className="flex-shrink-0">
 
-                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}
-                        className="flex items-center justify-center gap-4 flex-wrap">
-                        <button className="group flex items-center gap-2 px-6 py-3 rounded-full bg-brand-purple text-white font-bold text-sm hover:bg-brand-purple/80 transition-all shadow-lg shadow-brand-purple/30">
-                            Join the Club
-                            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                        </button>
-                        <button className="flex items-center gap-2 px-6 py-3 rounded-full border border-white/10 bg-white/5 text-white font-bold text-sm hover:bg-white/10 transition-all">
-                            <Github size={16} /> Our GitHub
-                        </button>
-                    </motion.div>
+                        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}
+                            className="flex items-center justify-center gap-4 flex-wrap">
+                            <button className="group flex items-center gap-2 px-6 py-3 rounded-full bg-brand-purple text-white font-bold text-sm hover:bg-brand-purple/80 transition-all shadow-lg shadow-brand-purple/30">
+                                Join the Club
+                                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                            </button>
+                            <button className="flex items-center gap-2 px-6 py-3 rounded-full border border-white/10 bg-white/5 text-white font-bold text-sm hover:bg-white/10 transition-all">
+                                <Github size={16} /> Our GitHub
+                            </button>
+                        </motion.div>
+                    </Link>
                 </motion.div>
 
                 <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 1.5, repeat: Infinity }}
@@ -168,52 +169,39 @@ export default function AboutContent() {
                 <div className="container mx-auto px-6 max-w-6xl">
                     <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                         className="text-center mb-16">
-                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 mb-4">
+                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-black/40 mb-4">
                             <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-gray-400">Purpose</span>
                         </div>
                         <h2 className="text-5xl font-black text-white">Mission & Vision</h2>
                     </motion.div>
 
                     <div className="grid md:grid-cols-2 gap-6">
-
                         {/* Mission */}
                         <motion.div
                             initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }} transition={{ duration: 0.6 }}
                             className="group relative rounded-3xl overflow-hidden cursor-default"
                         >
-                            {/* Layered background */}
-                            <div className="absolute inset-0 bg-gradient-to-br from-brand-purple/20 via-brand-purple/5 to-transparent" />
-                            <div className="absolute inset-0 bg-[#0e0e0e]/80" />
+                            <div className="absolute inset-0 bg-[#0d0d0d]" />
+                            <div className="absolute inset-0 bg-gradient-to-br from-brand-purple/15 via-transparent to-transparent" />
                             <div className="absolute inset-[1px] rounded-3xl border border-brand-purple/25 group-hover:border-brand-purple/50 transition-all duration-500" />
-
-                            {/* Top accent bar */}
                             <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-brand-purple to-transparent" />
-
-                            {/* Glow on hover */}
                             <div className="absolute -top-20 -left-20 w-60 h-60 bg-brand-purple/20 rounded-full blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-
                             <div className="relative z-10 p-10">
-                                {/* Icon */}
                                 <div className="relative w-16 h-16 mb-8">
                                     <div className="absolute inset-0 bg-brand-purple/20 rounded-2xl blur-md" />
                                     <div className="relative w-16 h-16 rounded-2xl bg-brand-purple/15 border border-brand-purple/30 flex items-center justify-center">
                                         <Target size={28} className="text-brand-purple" />
                                     </div>
                                 </div>
-
-                                {/* Number tag */}
                                 <div className="flex items-center gap-3 mb-4">
                                     <span className="text-[10px] font-black tracking-[0.3em] uppercase text-brand-purple/60">01</span>
                                     <div className="h-px flex-1 bg-brand-purple/20" />
                                 </div>
-
                                 <h3 className="text-3xl font-black text-white mb-4">Our Mission</h3>
                                 <p className="text-gray-400 leading-relaxed mb-8">
                                     Empower students with resources, mentorship, and real opportunities to contribute to Web Development, Open Source, and emerging technologies — bridging the gap between academic learning and industry.
                                 </p>
-
-                                {/* Bullet points */}
                                 <div className="space-y-3">
                                     {["Hands-on workshops & bootcamps", "Open source contribution sprints", "Industry mentorship programs"].map((point) => (
                                         <div key={point} className="flex items-center gap-3">
@@ -231,38 +219,26 @@ export default function AboutContent() {
                             viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.15 }}
                             className="group relative rounded-3xl overflow-hidden cursor-default"
                         >
-                            {/* Layered background */}
-                            <div className="absolute inset-0 bg-gradient-to-br from-brand-cyan/20 via-brand-cyan/5 to-transparent" />
-                            <div className="absolute inset-0 bg-[#0e0e0e]/80" />
+                            <div className="absolute inset-0 bg-[#0d0d0d]" />
+                            <div className="absolute inset-0 bg-gradient-to-br from-brand-cyan/15 via-transparent to-transparent" />
                             <div className="absolute inset-[1px] rounded-3xl border border-brand-cyan/25 group-hover:border-brand-cyan/50 transition-all duration-500" />
-
-                            {/* Top accent bar */}
                             <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-brand-cyan to-transparent" />
-
-                            {/* Glow on hover */}
                             <div className="absolute -top-20 -right-20 w-60 h-60 bg-brand-cyan/15 rounded-full blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-
                             <div className="relative z-10 p-10">
-                                {/* Icon */}
                                 <div className="relative w-16 h-16 mb-8">
                                     <div className="absolute inset-0 bg-brand-cyan/20 rounded-2xl blur-md" />
                                     <div className="relative w-16 h-16 rounded-2xl bg-brand-cyan/10 border border-brand-cyan/30 flex items-center justify-center">
                                         <Lightbulb size={28} className="text-brand-cyan" />
                                     </div>
                                 </div>
-
-                                {/* Number tag */}
                                 <div className="flex items-center gap-3 mb-4">
                                     <span className="text-[10px] font-black tracking-[0.3em] uppercase text-brand-cyan/60">02</span>
                                     <div className="h-px flex-1 bg-brand-cyan/20" />
                                 </div>
-
                                 <h3 className="text-3xl font-black text-white mb-4">Our Vision</h3>
                                 <p className="text-gray-400 leading-relaxed mb-8">
                                     Build a sustainable ecosystem of developers at VIT Bhopal who actively contribute to open-source projects, innovate continuously, and advocate for an open, accessible, and secure internet for all.
                                 </p>
-
-                                {/* Bullet points */}
                                 <div className="space-y-3">
                                     {["A thriving open-source community", "Privacy & digital rights advocacy", "Students shaping the future web"].map((point) => (
                                         <div key={point} className="flex items-center gap-3">
@@ -273,16 +249,16 @@ export default function AboutContent() {
                                 </div>
                             </div>
                         </motion.div>
-
                     </div>
                 </div>
             </section>
+
             {/* ── VALUES ── */}
             <section className="py-24 border-t border-white/5 overflow-hidden">
                 <div className="container mx-auto px-6 max-w-6xl">
                     <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }} className="text-center mb-16">
-                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 mb-4">
+                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-black/40 mb-4">
                             <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-gray-400">What We Stand For</span>
                         </div>
                         <h2 className="text-5xl font-black text-white mb-4">Our Values</h2>
@@ -291,7 +267,7 @@ export default function AboutContent() {
                         </p>
                     </motion.div>
 
-                    {/* Scrolling tag marquee */}
+                    {/* Marquee */}
                     <div className="relative mb-12 flex overflow-hidden">
                         <motion.div
                             animate={{ x: ["0%", "-50%"] }}
@@ -299,7 +275,7 @@ export default function AboutContent() {
                             className="flex gap-3 flex-shrink-0"
                         >
                             {[...VALUES, ...VALUES].map((v, i) => (
-                                <div key={i} className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/[0.07] bg-white/[0.03] flex-shrink-0">
+                                <div key={i} className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/[0.07] bg-black/40 flex-shrink-0">
                                     <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: v.color }} />
                                     <span className="text-gray-400 text-xs font-semibold whitespace-nowrap">{v.title}</span>
                                 </div>
@@ -318,7 +294,7 @@ export default function AboutContent() {
                 <div className="container mx-auto px-6 max-w-4xl">
                     <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                         className="text-center mb-16">
-                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 mb-4">
+                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-black/40 mb-4">
                             <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-gray-400">Our Journey</span>
                         </div>
                         <h2 className="text-5xl font-black text-white">How We Got Here</h2>
@@ -329,7 +305,7 @@ export default function AboutContent() {
                             <button key={t.year} onClick={() => setActiveYear(t.year)}
                                 className={`px-4 py-2 rounded-full text-sm font-bold transition-all duration-300 ${activeYear === t.year
                                     ? "bg-brand-purple text-white shadow-lg shadow-brand-purple/30"
-                                    : "bg-white/5 text-gray-500 border border-white/10 hover:text-white"}`}>
+                                    : "bg-black/40 text-gray-500 border border-white/10 hover:text-white"}`}>
                                 {t.year}
                             </button>
                         ))}
@@ -345,10 +321,10 @@ export default function AboutContent() {
                                     onClick={() => setActiveYear(item.year)}
                                     className={`relative flex gap-6 pl-20 py-5 pr-6 rounded-2xl cursor-pointer transition-all duration-300 ${activeYear === item.year
                                         ? "bg-brand-purple/10 border border-brand-purple/20"
-                                        : "hover:bg-white/[0.03] border border-transparent"}`}>
+                                        : "bg-black/30 hover:bg-black/50 border border-white/[0.04]"}`}>
                                     <div className={`absolute left-[26px] top-1/2 -translate-y-1/2 w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all duration-300 ${activeYear === item.year
                                         ? "border-brand-purple bg-brand-purple shadow-lg shadow-brand-purple/50"
-                                        : "border-white/20 bg-[#0e0e0e]"}`}>
+                                        : "border-white/20 bg-black/60"}`}>
                                         {activeYear === item.year && <div className="w-2 h-2 rounded-full bg-white" />}
                                     </div>
                                     <div className="flex-1">
@@ -371,7 +347,7 @@ export default function AboutContent() {
             <section className="py-24 border-t border-white/5">
                 <div className="container mx-auto px-6 max-w-3xl text-center">
                     <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-                        className="relative p-12 rounded-3xl border border-white/10 bg-white/[0.02] overflow-hidden">
+                        className="relative p-12 rounded-3xl border border-white/10 bg-[#0d0d0d] overflow-hidden">
                         <div className="absolute inset-0 bg-gradient-to-br from-brand-purple/15 via-transparent to-brand-cyan/10" />
                         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-1 bg-gradient-to-r from-transparent via-brand-purple to-transparent" />
                         <div className="relative z-10">
@@ -383,10 +359,12 @@ export default function AboutContent() {
                                 Join 500+ students learning, building, and contributing to the open web. No experience required — just curiosity.
                             </p>
                             <div className="flex items-center justify-center gap-4 flex-wrap">
-                                <button className="group flex items-center gap-2 px-8 py-3.5 rounded-full bg-brand-purple text-white font-bold hover:bg-brand-purple/80 transition-all shadow-lg shadow-brand-purple/30">
-                                    Join the Club
-                                    <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                                </button>
+                                <Link href="/join" className="flex-shrink-0">
+                                    <button className="group flex items-center gap-2 px-8 py-3.5 rounded-full bg-brand-purple text-white font-bold hover:bg-brand-purple/80 transition-all shadow-lg shadow-brand-purple/30">
+                                        Join the Club
+                                        <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                                    </button>
+                                </Link>
                                 <button className="px-8 py-3.5 rounded-full border border-white/10 bg-white/5 text-white font-bold hover:bg-white/10 transition-all">
                                     Learn More
                                 </button>
