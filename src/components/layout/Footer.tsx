@@ -15,8 +15,8 @@ export default function Footer() {
         discover: [
             { label: "Gallery", href: "/gallery" },
             { label: "Projects", href: "/projects" },
-            { label: "Blog", href: "/blog" },
-            { label: "Resources", href: "/resources" },
+/*             { label: "Blog", href: "/blog" },
+ */            { label: "Resources", href: "/resources" },
         ],
         community: [
             { label: "Join Us", href: "/join" },

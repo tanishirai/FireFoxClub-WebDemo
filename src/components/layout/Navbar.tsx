@@ -13,7 +13,7 @@ const navLinks = [
   { name: "Events", path: "/events" },
   { name: "Team", path: "/team" },
   { name: "Gallery", path: "/gallery" },
-  { name: "Blog", path: "/blog" },
+  // { name: "Blog", path: "/blog" },
 ];
 
 export default function Navbar() {

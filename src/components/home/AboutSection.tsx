@@ -8,7 +8,7 @@ import {
     Flame, Star, BookOpen, Trophy
 } from "lucide-react";
 import Image from "next/image";
-
+import Link from "next/link";
 const STATS = [
     { value: "500+", label: "Active Members", icon: Users },
     { value: "50+", label: "Events Hosted", icon: Star },
@@ -210,10 +210,12 @@ export default function AboutPage() {
                         transition={{ delay: 0.5 }}
                         className="flex items-center justify-center gap-4 flex-wrap"
                     >
+                        <Link href="/join" className="flex-shrink-0">
                         <button className="group flex items-center gap-2 px-6 py-3 rounded-full bg-brand-purple text-white font-bold text-sm hover:bg-brand-purple/80 transition-all shadow-lg shadow-brand-purple/30">
                             Join the Club
                             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                         </button>
+                        </Link>
                         <button className="flex items-center gap-2 px-6 py-3 rounded-full border border-white/10 bg-white/5 text-white font-bold text-sm hover:bg-white/10 transition-all">
                             <Github size={16} />
                             Our GitHub
