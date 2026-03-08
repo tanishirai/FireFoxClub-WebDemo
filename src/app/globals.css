@@ -24,11 +24,7 @@
 }
 
 html {
-  background-image: url('/Background.jpg');
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  /* Static background removed – handled dynamically by BackgroundSwitcher component */
   background-color: #000000;
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */

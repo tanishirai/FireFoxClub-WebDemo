@@ -92,8 +92,8 @@ export default function HeroSection() {
                 className="relative z-10 w-full grid px-6"
                 style={{ y: yText, opacity: opacityText }}
             >
-                {/* Layer A - Blurred Background */}
-                <div className="col-start-1 row-start-1 w-full select-none pointer-events-none blur-[10px] opacity-40">
+                {/* Layer A - Blurred Background - Reduced blur from 10px to 4px */}
+                <div className="col-start-1 row-start-1 w-full select-none pointer-events-none blur-[4px] opacity-40">
                     {renderContent(false)}
                 </div>
 
