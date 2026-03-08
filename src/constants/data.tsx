@@ -209,3 +209,34 @@ export const TEAM_MEMBERS_PREVIEW = [
     { name: "Noah Fitzgerald", role: "Full Stack Dev",  initials: "NF", gradient: "from-brand-purple to-brand-red"    },
     { name: "Chloe Dupont",    role: "Marketing Lead",  initials: "CD", gradient: "from-brand-purple to-brand-purple" },
 ];
+
+export const GALLERY_DATA = [
+    {
+        category: "Hackathon 2024",
+        tag: "Tech Event",
+        color: "from-brand-purple to-brand-cyan",
+        images: [
+            { src: "https://picsum.photos/seed/hack1/800/600", caption: "Teams brainstorming ideas", span: "col-span-2 row-span-2" },
+            { src: "https://picsum.photos/seed/hack2/600/400", caption: "Mentors in action", span: "col-span-1 row-span-1" },
+            { src: "https://picsum.photos/seed/hack3/600/400", caption: "Prize ceremony", span: "col-span-1 row-span-1" },
+        ],
+    },
+    {
+        category: "Web Dev Bootcamp",
+        tag: "Workshop",
+        color: "from-brand-cyan to-brand-purple",
+        images: [
+            { src: "https://picsum.photos/seed/boot1/800/600", caption: "Live coding session", span: "col-span-1 row-span-1" },
+            { src: "https://picsum.photos/seed/boot2/800/400", caption: "Q&A with speakers", span: "col-span-2 row-span-1" },
+        ],
+    },
+    {
+        category: "Code & Coffee",
+        tag: "Meetup",
+        color: "from-brand-orange to-brand-purple",
+        images: [
+            { src: "https://picsum.photos/seed/cafe1/600/800", caption: "Evening networking", span: "col-span-1 row-span-2" },
+            { src: "https://picsum.photos/seed/cafe2/600/600", caption: "Casual conversations", span: "col-span-1 row-span-1" },
+        ],
+    },
+];
