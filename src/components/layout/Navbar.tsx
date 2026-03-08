@@ -32,20 +32,19 @@ export default function Navbar() {
   return (
     <header className="fixed top-6 left-0 w-full z-50 pointer-events-none">
       <div className="container mx-auto px-6 md:px-12 pointer-events-auto relative">
-        <div 
-          className={`relative flex justify-between items-center px-6 py-3 rounded-2xl transition-all duration-300 border overflow-hidden ${
-            scrolled 
-              ? "border-white/20 shadow-2xl shadow-brand-purple/10 scale-[0.98]" 
-              : "border-white/10 shadow-lg"
-          }`}
+        <div
+          className={`relative flex justify-between items-center px-6 py-3 rounded-2xl transition-all duration-300 border overflow-hidden ${scrolled
+            ? "border-white/20 shadow-2xl shadow-brand-purple/10 scale-[0.98]"
+            : "border-white/10 shadow-lg"
+            }`}
         >
           {/* Custom Wavy Background Image */}
-          <div 
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-500" 
-            style={{ 
-              backgroundImage: "url('/NavBar.png')", 
-              opacity: scrolled ? 0.9 : 0.6 
-            }} 
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-500"
+            style={{
+              backgroundImage: "url('/NavBar.png')",
+              opacity: scrolled ? 0.9 : 0.6
+            }}
           />
           {/* Dark Overlay to ensure text remains readable */}
           <div className={`absolute inset-0 backdrop-blur-sm transition-colors duration-500 z-0 ${scrolled ? 'bg-black/40' : 'bg-black/60'}`} />
@@ -66,7 +65,7 @@ export default function Navbar() {
                 />
               </motion.div>
               <span className="text-lg font-bold tracking-tight text-white group-hover:text-brand-purple transition-colors">
-                Firefox <span className="text-brand-purple">Club</span>
+                Mozilla Firefox <span className="text-brand-purple">Club</span>
               </span>
             </Link>
 
@@ -77,24 +76,23 @@ export default function Navbar() {
                   const isActive = pathname === link.path;
                   return (
                     <Link key={link.name} href={link.path} className="relative group">
-                      <span className={`text-sm font-medium transition-colors duration-200 ${
-                        isActive 
-                          ? "text-brand-purple" 
-                          : "text-gray-200 hover:text-white"
-                      }`}>
+                      <span className={`text-sm font-medium transition-colors duration-200 ${isActive
+                        ? "text-brand-purple"
+                        : "text-gray-200 hover:text-white"
+                        }`}>
                         {link.name}
                       </span>
                       {isActive && (
-                        <motion.div 
-                          layoutId="active-underline" 
-                          className="absolute left-0 -bottom-1 h-0.5 w-full rounded-full bg-brand-purple" 
+                        <motion.div
+                          layoutId="active-underline"
+                          className="absolute left-0 -bottom-1 h-0.5 w-full rounded-full bg-brand-purple"
                         />
                       )}
                     </Link>
                   );
                 })}
               </div>
-              
+
               <div className="flex items-center gap-3 border-l border-white/20 pl-6">
                 <Link href="/login" className="text-sm font-medium text-gray-200 hover:text-white transition-colors">
                   Sign In
@@ -112,8 +110,8 @@ export default function Navbar() {
             </nav>
 
             {/* Mobile Menu Toggle */}
-            <button 
-              aria-label={isOpen ? "Close menu" : "Open menu"} 
+            <button
+              aria-label={isOpen ? "Close menu" : "Open menu"}
               className="md:hidden text-white hover:text-brand-purple transition-colors"
               onClick={() => setIsOpen(!isOpen)}
             >
@@ -138,26 +136,25 @@ export default function Navbar() {
                   key={link.name}
                   href={link.path}
                   onClick={() => setIsOpen(false)}
-                  className={`px-4 py-3 rounded-xl font-medium transition-all ${
-                    pathname === link.path 
-                      ? "bg-brand-purple/10 text-brand-purple" 
-                      : "text-gray-300 hover:bg-white/5 hover:text-white"
-                  }`}
+                  className={`px-4 py-3 rounded-xl font-medium transition-all ${pathname === link.path
+                    ? "bg-brand-purple/10 text-brand-purple"
+                    : "text-gray-300 hover:bg-white/5 hover:text-white"
+                    }`}
                 >
                   {link.name}
                 </Link>
               ))}
               <div className="mt-4 pt-4 border-t border-white/10 flex flex-col gap-3">
-                <Link 
-                  href="/login" 
+                <Link
+                  href="/login"
                   onClick={() => setIsOpen(false)}
                   className="px-4 py-3 text-center text-gray-300 font-medium"
                 >
                   Sign In
                 </Link>
-                <Link 
-                  href="/join" 
-                  onClick={() => setIsOpen(false)} 
+                <Link
+                  href="/join"
+                  onClick={() => setIsOpen(false)}
                   className="px-4 py-3 rounded-xl bg-brand-purple text-white font-semibold text-center hover:bg-purple-600 transition-colors shadow-lg shadow-purple-500/20"
                 >
                   Get Started
