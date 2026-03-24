@@ -12,12 +12,17 @@ const CATEGORY_META: Record<string, { icon: React.ReactNode; borderColor: string
         borderColor: "hover:border-brand-purple/50",
         badgeClass: "border-brand-purple/30 text-brand-purple bg-brand-purple/5",
     },
-    Technical: {
+    "Technical Team": {
         icon: <Cpu size={13} />,
         borderColor: "hover:border-brand-cyan/50",
         badgeClass: "border-brand-cyan/30 text-brand-cyan bg-brand-cyan/5",
     },
-    Operations: {
+    "Event Management Team": {
+        icon: <Settings2 size={13} />,
+        borderColor: "hover:border-brand-yellow/50",
+        badgeClass: "border-brand-yellow/30 text-brand-yellow bg-brand-yellow/5",
+    },
+    "Social Media Team": {
         icon: <Settings2 size={13} />,
         borderColor: "hover:border-brand-purple/50",
         badgeClass: "border-brand-purple/30 text-brand-purple bg-brand-purple/5",
